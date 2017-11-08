@@ -6,9 +6,9 @@ body {
   margin-bottom: 0;
 }
 
-#featured-section {
+.featured-section {
   height: 450px;
-  background-color: lightblue;
+  color: #fff;
 }
 
 #featured-post {
@@ -24,4 +24,21 @@ body {
 
 #featured-details {
   text-transform: uppercase;
+}
+
+/* Categories for selection of featured background color. */
+#life {
+  background-color: #75ff9e;
+}
+
+#technology {
+  background-color: #75aaff;
+}
+
+#web-development {
+  background-color: #fff875;
+}
+
+#games {
+  background-color: #ff75ec;
 }

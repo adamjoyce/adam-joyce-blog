@@ -55,12 +55,16 @@
       </div><!-- /.container-fluid -->
     </nav>
 
-    <div class="container-fluid" id="featured-section">
+    <div class="featured-section container-fluid"
+    id="{{ featured_post.categories.first.slug }}">
       <div id="featured-post">
         <h1 id="featured-title">
-          Django - A Friendly Introduction To Great Things More Words
+          {{ featured_post.title }}
         </h1>
-        <h4 id="featured-details">Adam Joyce - 08/11/2017</h4>
+        <h4 id="featured-details">
+          {{ featured_post.author}} -
+          {{ featured_post.published_date.date }}
+        </h4>
       </div>
     </div>
 
