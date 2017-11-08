@@ -4,6 +4,43 @@ body {
 
 .navbar {
   margin-bottom: 0;
+  border: 0;
+  border-radius: 0;
+}
+
+.navbar-default {
+  background-color: #fff;
+}
+
+.nav-tabs {
+  border-bottom: 0;
+}
+
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover {
+  border: 0;
+}
+
+.nav-tabs a {
+  color: #777;
+}
+
+.nav>li>a:focus,
+.nav>li>a:hover {
+  color: #555;
+  background-color: #fff;
+}
+
+.nav-tabs>li {
+  margin-bottom: 0;
+}
+
+.nav-tabs>li>a {
+  margin-right: 2px;
+  border: 0;
+  border-radius: 0;
+  padding: 13px 15px;
 }
 
 .fa-gamepad {
@@ -35,19 +72,24 @@ body {
   margin: 20px 0;
 }
 
+#category-bar {
+  padding-top: 5px;
+  background-color: #e2e2e2;
+}
+
 /* Categories for selection of featured background color. */
-#life {
+#life-post {
   background-color: #75ff9e;
 }
 
-#technology {
+#technology-post {
   background-color: #75aaff;
 }
 
-#web-development {
+#web-development-post {
   background-color: #e2e241;
 }
 
-#games {
+#games-post {
   background-color: #ff75ec;
 }

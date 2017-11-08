@@ -1,0 +1,42 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+
+{% block body_block %}
+<!-- Category tabs -->
+<div class="container-fluid" id="category-bar">
+  <div class="container">
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active">
+        <a href="#recent-posts" aria-controls="recent-posts"
+        role="tab" data-toggle="tab">Recent Posts</a>
+      </li>
+      {% for cat in categories %}
+      <li role="presentation">
+        <a href="#{{ cat.slug }}" aria-controls="{{ cat.slug }}"
+        role="tab" data-toggle="tab">{{ cat.name }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<!-- Category panes -->
+<div class="container">
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="recent-posts">
+      {% for post in posts %}
+      <div class="">
+        <h2><a href="#">{{ post.title }}</a></h2>
+        <p>published: {{ post.published_date }}</p>
+        <p>{{ post.text|linebreaksbr }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    {% for cat in categories %}
+    <div role="tabpanel" class="tab-pane" id="{{ cat.slug }}">
+      {{ cat.name }}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
