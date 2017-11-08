@@ -6,16 +6,20 @@ body {
   margin-bottom: 0;
 }
 
-.featured-section {
-  height: 450px;
-  color: #fff;
+.fa-gamepad {
+  margin-bottom: 40px;
 }
 
 #featured-post {
   width: 80%;
   margin: 0 auto;
   padding-top: 50px;
+  color: #fff;
   text-align: center;
+}
+
+#featured-post i {
+  font-size: 15em;
 }
 
 #featured-title {
@@ -23,7 +27,12 @@ body {
 }
 
 #featured-details {
+  margin-bottom: 0;
   text-transform: uppercase;
+}
+
+#featured-icon {
+  margin: 20px 0;
 }
 
 /* Categories for selection of featured background color. */
@@ -36,7 +45,7 @@ body {
 }
 
 #web-development {
-  background-color: #fff875;
+  background-color: #e2e241;
 }
 
 #games {

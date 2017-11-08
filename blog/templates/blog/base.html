@@ -14,6 +14,13 @@
     integrity=
     "sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
     crossorigin="anonymous">
+    <link
+    href=
+    "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    rel="stylesheet"
+    integrity=
+    "sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+    crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'blog/css/blog.css' %}">
 
     <!-- Fonts -->
@@ -55,8 +62,7 @@
       </div><!-- /.container-fluid -->
     </nav>
 
-    <div class="featured-section container-fluid"
-    id="{{ featured_post.categories.first.slug }}">
+    <div class="container-fluid" id="{{ featured_post.categories.first.slug }}">
       <div id="featured-post">
         <h1 id="featured-title">
           {{ featured_post.title }}
@@ -65,6 +71,19 @@
           {{ featured_post.author}} -
           {{ featured_post.published_date.date }}
         </h4>
+        <div id="featured-icon">
+          {% if featured_post.categories.first.slug == "life"  %}
+          <i class="fa fa-globe" aria-hidden="true"></i>
+          {% elif featured_post.categories.first.slug == "technology" %}
+          <i class="fa fa-laptop" aria-hidden="true"></i>
+          {% elif featured_post.categories.first.slug == "web-development" %}
+          <i class="fa fa-at" aria-hidden="true"></i>
+          {% elif featured_post.categories.first.slug == "games" %}
+          <i class="fa fa-gamepad" aria-hidden="true"></i>
+          {% else %}
+          <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+          {% endif %}
+        </div>
       </div>
     </div>
 
