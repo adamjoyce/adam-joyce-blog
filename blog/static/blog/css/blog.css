@@ -1,0 +1,27 @@
+body {
+  font-family: 'Nunito', sans-serif;
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+#featured-section {
+  height: 450px;
+  background-color: lightblue;
+}
+
+#featured-post {
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 50px;
+  text-align: center;
+}
+
+#featured-title {
+  margin: 0;
+}
+
+#featured-details {
+  text-transform: uppercase;
+}
