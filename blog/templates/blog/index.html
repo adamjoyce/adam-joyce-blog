@@ -1,5 +1,6 @@
 {% extends 'blog/base.html' %}
 {% load staticfiles %}
+{% load blog_extras %}
 
 {% block body_block %}
 <!-- Category tabs -->
@@ -23,27 +24,43 @@
 <!-- Category panes -->
 <div class="container">
   <div class="tab-content">
+    <!-- Recent Posts -->
     <div role="tabpanel" class="tab-pane active" id="recent-posts">
-      {% for post in posts %}
-      {% if forloop.first %}<div class="row">{% endif %}
-      <div class="col-md-4">
-        <a href="#">
-          <div class="post-tab {{ post.categories.first.slug }}-post">
-            <div class="post-tab-title">
-              <h4>{{ post.title }}</h4>
-              <hr>
-              <h5>{{ post.published_date.date }}</h5>
+      <div class="row">
+        {% for post in posts %}
+        <div class="col-md-4 col-sm-6">
+          <a href="#">
+            <div class="post-tab {{ post.categories.first.slug }}-post">
+              <div class="post-tab-title">
+                <h4><strong>{{ post.title }}</strong></h4>
+                <hr>
+                <h5>{{ post.published_date.date }}</h5>
+              </div>
             </div>
-          </div>
-        </a>
+          </a>
+        </div>
+        {% endfor %}
       </div>
-      {% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %}
-      {% if forloop.last %}</div>{% endif %}
-      {% endfor %}
     </div>
+
+    <!-- Category Tabs -->
     {% for cat in categories %}
     <div role="tabpanel" class="tab-pane" id="{{ cat.slug }}">
-      {{ cat.name }}
+      <div class="row">
+        {% for post in cat_dict|key_value:cat.slug %}
+        <div class="col-md-4 col-sm-6">
+          <a href="#">
+            <div class="post-tab {{ post.categories.first.slug }}-post">
+              <div class="post-tab-title">
+                <h4><strong>{{ post.title }}</strong></h4>
+                <hr>
+                <h5>{{ post.published_date.date }}</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
     </div>
     {% endfor %}
   </div>
