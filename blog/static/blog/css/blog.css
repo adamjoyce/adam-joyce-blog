@@ -12,6 +12,10 @@ body {
   background-color: #fff;
 }
 
+.fa-gamepad {
+  margin-bottom: 40px;
+}
+
 .nav-tabs {
   border-bottom: 0;
 }
@@ -39,12 +43,57 @@ body {
 .nav-tabs>li>a {
   margin-right: 2px;
   border: 0;
-  border-radius: 0;
   padding: 13px 15px;
 }
 
-.fa-gamepad {
-  margin-bottom: 40px;
+.tab-content {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.tab-content a {
+  text-decoration: none;
+}
+
+.row {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.post-tab {
+  width: 100%;
+  height: 250px;
+  color: #fff;
+  background-color: #e2e2e2;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.post-tab-title {
+  padding: 75px 10px 0 10px;
+}
+
+.post-tab-title>hr {
+  width: 30%;
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+/* Categories for selection of featured background color. */
+.life-post {
+  background-color: #75ff9e;
+}
+
+.technology-post {
+  background-color: #75aaff;
+}
+
+.web-development-post {
+  background-color: #e2e241;
+}
+
+.games-post {
+  background-color: #ff75ec;
 }
 
 #featured-post {
@@ -77,19 +126,19 @@ body {
   background-color: #e2e2e2;
 }
 
-/* Categories for selection of featured background color. */
-#life-post {
-  background-color: #75ff9e;
-}
+@media screen and (max-width: 768px) {
+  .nav-tabs>li {
+    width: 100%;
+    margin: 2px 0;
+    text-align: center;
+  }
 
-#technology-post {
-  background-color: #75aaff;
-}
+  .nav-tabs>li>a {
+    border-radius: 25px;
+  }
 
-#web-development-post {
-  background-color: #e2e241;
-}
-
-#games-post {
-  background-color: #ff75ec;
+  #category-bar {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
 }
