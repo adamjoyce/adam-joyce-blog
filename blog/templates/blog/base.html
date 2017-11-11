@@ -38,14 +38,17 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Adam's Blog</a>
+          <a class="navbar-brand" href="{% url 'index' %}">
+            Indifferent Pumpkin
+          </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active">
-              <a href="#">Archive <span class="sr-only">(current)</span></a>
+            <li {% if request.resolver_match.url_name == 'archive' %}
+            class="active"{% endif %}>
+              <a href="{% url 'archive' %}">Archive</a>
             </li>
             <li><a href="#">Portfolio</a></li>
             <li><a href="#">Random Article</a></li>
@@ -59,6 +62,7 @@
       </div><!-- /.container-fluid -->
     </nav>
 
+    {% block title_post %}
     <!-- Featured post -->
     <div class="container-fluid {{ featured_post.categories.first.slug }}-post">
       <div id="featured-post">
@@ -84,14 +88,42 @@
         </div>
       </div>
     </div>
+    {% endblock %}
 
     {% block body_block %}
     {% endblock %}
 
     <footer>
       <hr>
-      <div class="container-fluid">
-        <p>Footer</p>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-sm-4">
+            <h4>Category</h4>
+            <h5>Link</h5>
+            <h5>Link</h5>
+            <h5>Link</h5>
+          </div>
+
+          <div class="col-md-3 col-sm-4">
+            <h4>Category</h4>
+            <h5>Link</h5>
+            <h5>Link</h5>
+            <h5>Link</h5>
+          </div>
+
+          <div class="col-md-3 col-sm-4">
+            <h4>Category</h4>
+            <h5>Link</h5>
+            <h5>Link</h5>
+            <h5>Link</h5>
+          </div>
+
+          <div class="col-md-3 col-sm-4 align-right">
+            <h4>Blog Info</h4>
+            <h5>About</h5>
+            <h5>Contact</h5>
+          </div>
+        </div>
       </div>
     </footer>
 
@@ -104,5 +136,6 @@
     src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
     integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
     crossorigin="anonymous"></script>
+    <!-- <script src="{% static 'blog/js/blog.js' %}" type="text/javascript"></script> -->
   </body>
 </html>

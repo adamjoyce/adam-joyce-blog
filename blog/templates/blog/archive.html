@@ -1,0 +1,37 @@
+{% extends 'blog/base.html' %}
+{% load staticfiles %}
+
+{% block title_post %}
+{% endblock %}
+
+{% block body_block %}
+<div class="container plain-anchors">
+  <div id="archive-header">
+    <h2>Blog Archive</h2>
+    <h4>
+      Showing Page {{ archived_posts.number }} of
+      {{ archived_posts.paginator.num_pages }}
+    </h4>
+
+    <a href="#"><< Older Posts</a>
+    <a href="#">Newer Posts >></a>
+  </div>
+
+  <!-- Archived Post Pages -->
+  <div class="row">
+    {% for post in archived_posts %}
+    <div class="col-md-4 col-sm-6">
+      <a href="#">
+        <div class="post-tab {{ post.categories.first.slug }}-post">
+          <div class="post-tab-title">
+            <h4><strong>{{ post.title }}</strong></h4>
+            <hr>
+            <h5>{{ post.published_date.date }}</h5>
+          </div>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

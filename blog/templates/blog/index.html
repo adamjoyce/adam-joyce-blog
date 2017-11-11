@@ -3,7 +3,7 @@
 {% load blog_extras %}
 
 {% block body_block %}
-<!-- Category tabs -->
+<!-- Category Tabs -->
 <div class="container-fluid" id="category-bar">
   <div class="container">
     <ul class="nav nav-tabs">
@@ -23,11 +23,11 @@
 
 <!-- Category panes -->
 <div class="container">
-  <div class="tab-content">
-    <!-- Recent Posts -->
+  <div class="tab-content plain-anchors">
+    <!-- Recent Posts Page -->
     <div role="tabpanel" class="tab-pane active" id="recent-posts">
       <div class="row">
-        {% for post in posts %}
+        {% for post in recent_posts %}
         <div class="col-md-4 col-sm-6">
           <a href="#">
             <div class="post-tab {{ post.categories.first.slug }}-post">
@@ -43,7 +43,7 @@
       </div>
     </div>
 
-    <!-- Category Tabs -->
+    <!-- Category Pages -->
     {% for cat in categories %}
     <div role="tabpanel" class="tab-pane" id="{{ cat.slug }}">
       <div class="row">
