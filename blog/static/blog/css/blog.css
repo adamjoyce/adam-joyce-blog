@@ -109,6 +109,21 @@ footer {
   text-align: right;
 }
 
+.archive-navigation {
+  width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.archive-navigation {
+  margin-bottom: 10px;
+}
+
+.archive-navigation a {
+  display: inline-block;
+  width: 30%;
+}
+
 #featured-post {
   width: 80%;
   margin: 0 auto;
@@ -141,11 +156,7 @@ footer {
 
 #archive-header,
 #archive-header h4 {
-  margin-bottom: 15px;
-}
-
-#archive-header a {
-  font-size: 1.2em;
+  margin-bottom: 30px;
 }
 
 @media screen and (max-width: 768px) {

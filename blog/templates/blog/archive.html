@@ -6,15 +6,13 @@
 
 {% block body_block %}
 <div class="container plain-anchors">
+  <!-- Page Information -->
   <div id="archive-header">
     <h2>Blog Archive</h2>
     <h4>
       Showing Page {{ archived_posts.number }} of
       {{ archived_posts.paginator.num_pages }}
     </h4>
-
-    <a href="#"><< Older Posts</a>
-    <a href="#">Newer Posts >></a>
   </div>
 
   <!-- Archived Post Pages -->
@@ -32,6 +30,25 @@
       </a>
     </div>
     {% endfor %}
+  </div>
+
+  <!-- Page Naviagtion -->
+  <div class="archive-navigation">
+    {% if archived_posts.has_next %}
+    <a
+    href="?page={{ archived_posts.next_page_number }}"
+    class="btn btn-default">Older Posts</a>
+    {% else %}
+    <a href="#" class="btn btn-default" disabled>Older Posts</a>
+    {% endif %}
+
+    {% if archived_posts.has_previous %}
+    <a
+    href="?page={{ archived_posts.previous_page_number }}" 
+    class="btn btn-default">Newer Posts</a>
+    {% else %}
+    <a href="#" class="btn btn-default" disabled>Newer Posts</a>
+    {% endif %}
   </div>
 </div>
 {% endblock %}
