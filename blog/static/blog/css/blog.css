@@ -6,6 +6,12 @@ footer {
   margin-bottom: 50px;
 }
 
+a,
+a:focus,
+a:hover {
+  text-decoration: none;
+}
+
 .navbar {
   margin-bottom: 0;
   border: 0;

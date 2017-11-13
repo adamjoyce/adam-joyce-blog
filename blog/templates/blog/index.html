@@ -41,6 +41,11 @@
         </div>
         {% endfor %}
       </div>
+
+      <!-- Navigation to all posts on the archive page -->
+      <div class="archive-navigation">
+        <a href="{% url 'archive_all' %}" class="btn btn-default">All Posts</a>
+      </div>
     </div>
 
     <!-- Category Pages -->
@@ -60,6 +65,12 @@
           </a>
         </div>
         {% endfor %}
+      </div>
+
+      <!-- Navigation to main category page -->
+      <div class="archive-navigation">
+        <a href="{% url 'archive_category' cat.slug %}"
+        class="btn btn-default">More</a>
       </div>
     </div>
     {% endfor %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -37,17 +37,24 @@ def index(request):
 
     return render(request, 'blog/index.html', context_dict)
 
-def archive(request):
+def archive(request, category_slug=""):
     context_dict = {}
     num_of_posts_per_page = 18
 
-    # Grab all the posts, split them into pages, and add them to the context dictionary.
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by(
-            '-published_date')
+    if not category_slug:
+        # Grab all the posts.
+        posts = Post.objects.filter(published_date__lte=timezone.now()).order_by(
+                '-published_date')
+    else:
+        # Grab posts that fall into the relevent category.
+        posts = Post.objects.filter(categories__slug=category_slug).order_by(
+                '-published_date')
     paginator = Paginator(posts, num_of_posts_per_page)
     archived_posts = get_paginator_page(request, paginator)
     context_dict['archived_posts'] = archived_posts
 
+    context_dict['posts'] = posts
+    print(context_dict['posts'])
     return render(request, 'blog/archive.html', context_dict)
 
 def get_paginator_page(request, paginator):

@@ -48,7 +48,7 @@
           <ul class="nav navbar-nav">
             <li {% if request.resolver_match.url_name == 'archive' %}
             class="active"{% endif %}>
-              <a href="{% url 'archive' %}">Archive</a>
+              <a href="{% url 'archive_all' %}">Archive</a>
             </li>
             <li><a href="#">Portfolio</a></li>
             <li><a href="#">Random Article</a></li>
@@ -64,30 +64,33 @@
 
     {% block title_post %}
     <!-- Featured post -->
-    <div class="container-fluid {{ featured_post.categories.first.slug }}-post">
-      <div id="featured-post">
-        <h1 id="featured-title">
-          <strong>{{ featured_post.title }}</strong>
-        </h1>
-        <h4 id="featured-details">
-          {{ featured_post.author}} -
-          {{ featured_post.published_date.date }}
-        </h4>
-        <div id="featured-icon">
-          {% if featured_post.categories.first.slug == "life"  %}
-          <i class="fa fa-globe" aria-hidden="true"></i>
-          {% elif featured_post.categories.first.slug == "technology" %}
-          <i class="fa fa-laptop" aria-hidden="true"></i>
-          {% elif featured_post.categories.first.slug == "web-development" %}
-          <i class="fa fa-at" aria-hidden="true"></i>
-          {% elif featured_post.categories.first.slug == "games" %}
-          <i class="fa fa-gamepad" aria-hidden="true"></i>
-          {% else %}
-          <i class="fa fa-newspaper-o" aria-hidden="true"></i>
-          {% endif %}
+    <a href="#">
+      <div
+      class="container-fluid {{ featured_post.categories.first.slug }}-post">
+        <div id="featured-post">
+          <h1 id="featured-title">
+            <strong>{{ featured_post.title }}</strong>
+          </h1>
+          <h4 id="featured-details">
+            {{ featured_post.author}} -
+            {{ featured_post.published_date.date }}
+          </h4>
+          <div id="featured-icon">
+            {% if featured_post.categories.first.slug == "life"  %}
+            <i class="fa fa-globe" aria-hidden="true"></i>
+            {% elif featured_post.categories.first.slug == "technology" %}
+            <i class="fa fa-laptop" aria-hidden="true"></i>
+            {% elif featured_post.categories.first.slug == "web-development" %}
+            <i class="fa fa-at" aria-hidden="true"></i>
+            {% elif featured_post.categories.first.slug == "games" %}
+            <i class="fa fa-gamepad" aria-hidden="true"></i>
+            {% else %}
+            <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+            {% endif %}
+          </div>
         </div>
       </div>
-    </div>
+    </a>
     {% endblock %}
 
     {% block body_block %}
