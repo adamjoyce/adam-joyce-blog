@@ -6,9 +6,22 @@
 
 {% block body_block %}
 <div class="container plain-anchors">
+  {% if category_missing %}
+  <!-- The given category does not exist -->
+  <div id="archive-header">
+    <h2>That Category Does Not Exist</h2>
+  </div>
+  {% else %}
   <!-- Page Information -->
   <div id="archive-header">
-    <h2>Blog Archive</h2>
+    <h2>
+      {% if not category %}
+      Blog
+      {% else %}
+      {{ archived_posts.object_list.first.category.name }}
+      {% endif %}
+      Archive
+    </h2>
     <h4>
       Showing Page {{ archived_posts.number }} of
       {{ archived_posts.paginator.num_pages }}
@@ -20,7 +33,7 @@
     {% for post in archived_posts %}
     <div class="col-md-4 col-sm-6">
       <a href="#">
-        <div class="post-tab {{ post.categories.first.slug }}-post">
+        <div class="post-tab {{ post.category.slug }}-post">
           <div class="post-tab-title">
             <h4><strong>{{ post.title }}</strong></h4>
             <hr>
@@ -50,5 +63,6 @@
     <a href="#" class="btn btn-default" disabled>Newer Posts</a>
     {% endif %}
   </div>
+  {% endif %}
 </div>
 {% endblock %}

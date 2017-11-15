@@ -28,7 +28,7 @@ def index(request):
     # lookup function which uses the category slug.
     cat_dict = {}
     for cat in cats:
-        posts = Post.objects.filter(categories__name=cat.name).order_by(
+        posts = Post.objects.filter(category__name=cat.name).order_by(
                 '-published_date')
         paginator = Paginator(posts, num_of_posts_per_page)
         cat_posts = get_paginator_page(request, paginator)
@@ -37,24 +37,37 @@ def index(request):
 
     return render(request, 'blog/index.html', context_dict)
 
-def archive(request, category_slug=""):
+def archive(request, category_slug=None):
     context_dict = {}
+    context_dict['category'] = category_slug
     num_of_posts_per_page = 18
 
-    if not category_slug:
-        # Grab all the posts.
-        posts = Post.objects.filter(published_date__lte=timezone.now()).order_by(
-                '-published_date')
+    if category_slug:
+        cats = Category.objects.all()
+
+        category_slugs = []
+        for cat in cats:
+            category_slugs.append(cat.slug)
+
+        # Is the category valid?
+        if category_slug not in category_slugs:
+            context_dict['category_missing'] = True
+            return render(request, 'blog/archive.html', context_dict)
+        else:
+            # Grab posts that fall into the relevent category.
+            posts = Post.objects.filter(
+                    category__slug=category_slug).order_by('-published_date')
     else:
-        # Grab posts that fall into the relevent category.
-        posts = Post.objects.filter(categories__slug=category_slug).order_by(
+        # Grab all the posts.
+        posts = Post.objects.filter(
+                published_date__lte=timezone.now()).order_by(
                 '-published_date')
+
     paginator = Paginator(posts, num_of_posts_per_page)
     archived_posts = get_paginator_page(request, paginator)
     context_dict['archived_posts'] = archived_posts
 
-    context_dict['posts'] = posts
-    print(context_dict['posts'])
+    print(context_dict['archived_posts'])
     return render(request, 'blog/archive.html', context_dict)
 
 def get_paginator_page(request, paginator):
