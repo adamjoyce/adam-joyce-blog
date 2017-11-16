@@ -42,9 +42,11 @@ def archive(request, category_slug=None):
     context_dict['category'] = category_slug
     num_of_posts_per_page = 18
 
-    if category_slug:
-        cats = Category.objects.all()
+    # Categories need adding for footer.
+    cats = Category.objects.all()
+    context_dict['categories'] = cats
 
+    if category_slug:
         category_slugs = []
         for cat in cats:
             category_slugs.append(cat.slug)

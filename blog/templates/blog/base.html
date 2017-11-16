@@ -50,8 +50,8 @@
             class="active"{% endif %}>
               <a href="{% url 'archive_all' %}">Archive</a>
             </li>
-            <li><a href="#">Portfolio</a></li>
             <li><a href="#">Random Article</a></li>
+            <li><a href="#">Portfolio</a></li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
@@ -100,31 +100,27 @@
       <hr>
       <div class="container">
         <div class="row">
-          <div class="col-md-3 col-sm-4">
-            <h4>Category</h4>
-            <h5>Link</h5>
-            <h5>Link</h5>
-            <h5>Link</h5>
+          <div class="col-md-4 col-sm-4 link-block">
+            <h4>Posts</h4>
+            <a href="{% url 'archive_all' %}">All Posts</a>
+            {% for cat in categories %}
+            <br>
+            <a href="{% url 'archive_category' cat.slug %}">
+              {{ cat.name }}
+            </a>
+            {% endfor %}
           </div>
 
-          <div class="col-md-3 col-sm-4">
-            <h4>Category</h4>
-            <h5>Link</h5>
-            <h5>Link</h5>
-            <h5>Link</h5>
+          <div class="col-md-4 col-sm-4 link-block">
+            <h4>Navigation</h4>
+            <a href="#">Random Article</a><br>
+            <a href="#">Portfolio</a>
           </div>
 
-          <div class="col-md-3 col-sm-4">
-            <h4>Category</h4>
-            <h5>Link</h5>
-            <h5>Link</h5>
-            <h5>Link</h5>
-          </div>
-
-          <div class="col-md-3 col-sm-4 align-right">
-            <h4>Blog Info</h4>
-            <h5>About</h5>
-            <h5>Contact</h5>
+          <div class="col-md-4 col-sm-4 link-block align-right">
+            <h4>Indifferent Pumpkin</h4>
+            <a href="#">About Me</a><br>
+            <a href="#">Contact</a>
           </div>
         </div>
       </div>
