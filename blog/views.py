@@ -1,12 +1,13 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import Category, Post
 
+num_of_posts_per_page = 18
+
 def index(request):
     context_dict = {}
-    num_of_posts_per_page = 9
 
     # Categories.
     cats = Category.objects.all()
@@ -15,7 +16,7 @@ def index(request):
     # All posts.
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by(
             '-published_date')
-    paginator = Paginator(posts, num_of_posts_per_page)
+    paginator = Paginator(posts, num_of_posts_per_page * 0.5)
     recent_posts = get_paginator_page(request, paginator)
     context_dict['recent_posts'] = recent_posts
 
@@ -40,9 +41,8 @@ def index(request):
 def archive(request, category_slug=None):
     context_dict = {}
     context_dict['category'] = category_slug
-    num_of_posts_per_page = 18
 
-    # Categories need adding for footer.
+    # Categories for the footer.
     cats = Category.objects.all()
     context_dict['categories'] = cats
 
@@ -71,6 +71,19 @@ def archive(request, category_slug=None):
 
     print(context_dict['archived_posts'])
     return render(request, 'blog/archive.html', context_dict)
+
+def post(request, category_slug, post_slug):
+    context_dict = {}
+
+    # Categories for the footer.
+    cats = Category.objects.all()
+    context_dict['categories'] = cats
+
+    # The post being displayed.
+    featured_post = Post.objects.filter(slug=post_slug)[0]
+    context_dict['featured_post'] = featured_post
+
+    return render(request, 'blog/post.html', context_dict)
 
 def get_paginator_page(request, paginator):
     page = request.GET.get('page')

@@ -5,5 +5,6 @@ from . import views
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^archive/$', views.archive, name='archive_all'),
+    url(r'^(?P<category_slug>.+)/(?P<post_slug>.+)/$', views.post, name='post'),
     url(r'^(?P<category_slug>.+)/$', views.archive, name='archive_category'),
 ]

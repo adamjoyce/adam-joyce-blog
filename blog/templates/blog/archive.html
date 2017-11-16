@@ -32,7 +32,7 @@
   <div class="row">
     {% for post in archived_posts %}
     <div class="col-md-4 col-sm-6">
-      <a href="#">
+      <a href="{% url 'post' post.category.slug post.slug %}">
         <div class="post-tab {{ post.category.slug }}-post">
           <div class="post-tab-title">
             <h4><strong>{{ post.title }}</strong></h4>

@@ -64,33 +64,33 @@
 
     {% block title_post %}
     <!-- Featured post -->
-    <a href="#">
-      <div
-      class="container-fluid {{ featured_post.category.slug }}-post">
-        <div id="featured-post">
-          <h1 id="featured-title">
-            <strong>{{ featured_post.title }}</strong>
-          </h1>
-          <h4 id="featured-details">
-            {{ featured_post.author}} -
-            {{ featured_post.published_date.date }}
-          </h4>
-          <div id="featured-icon">
-            {% if featured_post.category.slug == "life"  %}
-            <i class="fa fa-globe" aria-hidden="true"></i>
-            {% elif featured_post.category.slug == "technology" %}
-            <i class="fa fa-laptop" aria-hidden="true"></i>
-            {% elif featured_post.category.slug == "web-development" %}
-            <i class="fa fa-at" aria-hidden="true"></i>
-            {% elif featured_post.category.slug == "games" %}
-            <i class="fa fa-gamepad" aria-hidden="true"></i>
-            {% else %}
-            <i class="fa fa-newspaper-o" aria-hidden="true"></i>
-            {% endif %}
-          </div>
+    {% block open-anchor %}{% endblock %}
+    <div
+    class="container-fluid {{ featured_post.category.slug }}-post">
+      <div id="featured-post">
+        <h1 id="featured-title">
+          <strong>{{ featured_post.title }}</strong>
+        </h1>
+        <h4 id="featured-details">
+          {{ featured_post.author}} -
+          {{ featured_post.published_date.date }}
+        </h4>
+        <div id="featured-icon">
+          {% if featured_post.category.slug == "life"  %}
+          <i class="fa fa-globe" aria-hidden="true"></i>
+          {% elif featured_post.category.slug == "technology" %}
+          <i class="fa fa-laptop" aria-hidden="true"></i>
+          {% elif featured_post.category.slug == "web-development" %}
+          <i class="fa fa-at" aria-hidden="true"></i>
+          {% elif featured_post.category.slug == "games" %}
+          <i class="fa fa-gamepad" aria-hidden="true"></i>
+          {% else %}
+          <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+          {% endif %}
         </div>
       </div>
-    </a>
+    </div>
+    {% block close-anchor %}{% endblock %}
     {% endblock %}
 
     {% block body_block %}
