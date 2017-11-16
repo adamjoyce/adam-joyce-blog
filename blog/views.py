@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+from random import randint
+
 from .models import Category, Post
 
 num_of_posts_per_page = 18
@@ -72,7 +74,7 @@ def archive(request, category_slug=None):
     print(context_dict['archived_posts'])
     return render(request, 'blog/archive.html', context_dict)
 
-def post(request, category_slug, post_slug):
+def post(request, category_slug, post_slug, random=False):
     context_dict = {}
 
     # Categories for the footer.
@@ -80,7 +82,11 @@ def post(request, category_slug, post_slug):
     context_dict['categories'] = cats
 
     # The post being displayed.
-    featured_post = Post.objects.filter(slug=post_slug)[0]
+    if not random:
+        featured_post = Post.objects.filter(slug=post_slug)[0]
+    else:
+        posts = Post.objects.filter(published_date__lte=timezone.now())
+        featured_post = posts[randint(0, posts.count - 1)]
     context_dict['featured_post'] = featured_post
 
     return render(request, 'blog/post.html', context_dict)

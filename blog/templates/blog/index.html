@@ -2,7 +2,9 @@
 {% load staticfiles %}
 {% load blog_extras %}
 
-{% block open-anchor %}<a href="#">{% endblock %}
+{% block open-anchor %}
+<a href="{% url 'post' featured_post.category.slug featured_post.slug %}">
+{% endblock %}
 {% block close-anchor %}</a>{% endblock %}
 
 {% block body_block %}
