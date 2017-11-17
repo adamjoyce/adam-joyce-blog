@@ -50,7 +50,9 @@
             class="active"{% endif %}>
               <a href="{% url 'archive_all' %}">Archive</a>
             </li>
-            <li><a href="#">Random Article</a></li>
+            <li>
+              <a href="{% url 'random_post' random='True' %}">Random Article</a>
+            </li>
             <li><a href="#">Portfolio</a></li>
           </ul>
 
@@ -113,8 +115,8 @@
 
           <div class="col-md-4 col-sm-4 link-block">
             <h4>Navigation</h4>
-            <a href="#">Random Article</a><br>
-            <a href="#">Portfolio</a>
+            <a href="{% url 'random_post' random='True' %}">Random Article</a>
+            <br><a href="#">Portfolio</a>
           </div>
 
           <div class="col-md-4 col-sm-4 link-block align-right">

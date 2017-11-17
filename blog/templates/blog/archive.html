@@ -52,7 +52,7 @@
     href="?page={{ archived_posts.next_page_number }}"
     class="btn btn-default">Older Posts</a>
     {% else %}
-    <a href="#" class="btn btn-default" disabled>Older Posts</a>
+    <a href="#" class="btn btn-default disabled">Older Posts</a>
     {% endif %}
 
     {% if archived_posts.has_previous %}
@@ -60,7 +60,7 @@
     href="?page={{ archived_posts.previous_page_number }}"
     class="btn btn-default">Newer Posts</a>
     {% else %}
-    <a href="#" class="btn btn-default" disabled>Newer Posts</a>
+    <a href="#" class="btn btn-default disabled">Newer Posts</a>
     {% endif %}
   </div>
   {% endif %}
