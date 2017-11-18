@@ -91,6 +91,10 @@ def post(request, category_slug=None, post_slug=None, random=False):
     featured_post = Post.objects.filter(slug=post_slug)[0]
     context_dict['featured_post'] = featured_post
 
+    # Split the post into paragraphs.
+    paragraphs = featured_post.text.splitlines()
+    context_dict['paragraphs'] = paragraphs
+
     return render(request, 'blog/post.html', context_dict)
 
 def get_paginator_page(request, paginator):
