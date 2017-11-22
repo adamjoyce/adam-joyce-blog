@@ -2,6 +2,16 @@ from django.db import models
 from django.utils import timezone
 from django.template.defaultfilters import slugify
 
+class Author(models.Model):
+    user = models.ForeignKey('auth.User')
+    first_name = models.CharField(max_length=15)
+    last_name = models.CharField(max_length=15)
+    description = models.TextField()
+    image = models.ImageField(upload_to='blog/author_images', blank=True)
+
+    def __str__(self):
+        return self.user.username
+
 class Category(models.Model):
     name = models.CharField(max_length=25, unique=True)
     slug = models.SlugField(unique=True, blank=True)
@@ -17,7 +27,7 @@ class Category(models.Model):
         return self.name
 
 class Post(models.Model):
-    author = models.ForeignKey('auth.User')
+    author = models.ForeignKey(Author)
     category = models.ForeignKey(Category)
     title = models.CharField(max_length=200)
     text = models.TextField()
@@ -35,10 +45,3 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
-
-class Author(models.Model):
-    user = models.ForeignKey('auth.User')
-    image = models.ImageField(upload_to='blog/author_images', blank=True)
-
-    def __str__(self):
-        return self.user.username

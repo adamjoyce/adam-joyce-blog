@@ -3,10 +3,22 @@
 
 {% block body_block %}
 <div id="post-container">
-  {{ featured_post.text|safe }}
+  <div id="post-content">
+    {{ featured_post.text|safe }}
+  </div>
 
-  <div class="author">
+  <div id="author-container">
+    <!-- Author Picture -->
+    <div id="author-picture">
+      <img src="{{ featured_post.author.image.url }}" alt="Author Image">
+    </div>
 
+    <!-- Author Info -->
+    <div id="author-info">
+      <p>written by {{ featured_post.author.first_name }}
+      {{ featured_post.author.last_name}}</p>
+      <p>{{ featured_post.author.description|safe }}</p>
+    </div>
   </div>
 </div>
 {% endblock %}
