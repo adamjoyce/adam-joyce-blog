@@ -3,10 +3,10 @@
 
 {% block body_block %}
 <div id="post-container">
-  {% for paragraph in paragraphs %}
-  {% if paragraph %}
-  <p>{{ paragraph }}</p>
-  {% endif %}
-  {% endfor %}
+  {{ featured_post.text|safe }}
+
+  <div class="author">
+
+  </div>
 </div>
 {% endblock %}

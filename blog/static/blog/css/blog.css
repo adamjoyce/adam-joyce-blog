@@ -97,21 +97,37 @@ a:hover {
   margin-bottom: 1px;
 }
 
-/* Categories for selection of featured background color. */
+/* Categories for selection of featured post background and text color. */
 .life-post {
   background-color: #42f48c;
+}
+
+.life-color {
+  color: #42f48c;
 }
 
 .technology-post {
   background-color: #41a9f4;
 }
 
+.technology-color {
+  color: #41a9f4;
+}
+
 .web-development-post {
-  background-color: /*#f4df41*/#f7e142;
+  background-color: #f7e142;
+}
+
+.web-development-color {
+  color: #f7e142;
 }
 
 .games-post {
   background-color: #f441eb;
+}
+
+.games-color {
+  color: #f441eb;
 }
 /* End categories */
 
@@ -172,17 +188,23 @@ a:hover {
 #post-container {
   width: 600px;
   margin: 50px auto;
+  color: #555;
   font-size: 1.3em;
   line-height: 1.6em;
 }
 
 #post-container p {
+  margin-top: 30px;
   margin-bottom: 30px;
 }
 
 #post-container p:first-child::first-letter {
   font-size: 250%;
   font-weight: bold;
+}
+
+#post-container h2 {
+  color: #777;
 }
 
 @media screen and (max-width: 768px) {

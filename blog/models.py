@@ -35,3 +35,10 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+class Author(models.Model):
+    user = models.ForeignKey('auth.User')
+    image = models.ImageField(upload_to='blog/author_images', blank=True)
+
+    def __str__(self):
+        return self.user.username

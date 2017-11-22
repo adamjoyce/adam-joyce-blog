@@ -92,8 +92,8 @@ def post(request, category_slug=None, post_slug=None, random=False):
     context_dict['featured_post'] = featured_post
 
     # Split the post into paragraphs.
-    paragraphs = featured_post.text.splitlines()
-    context_dict['paragraphs'] = paragraphs
+    # paragraphs = featured_post.text.splitlines()
+    # context_dict['paragraphs'] = paragraphs
 
     return render(request, 'blog/post.html', context_dict)
 
